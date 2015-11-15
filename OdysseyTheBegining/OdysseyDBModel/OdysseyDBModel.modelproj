@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d476e442-146d-46c8-a2ee-8d3ec8517273}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>OdysseyDBModel</Name>
+    <RootNamespace>OdysseyDBModel</RootNamespace>
+    <SccProjectName>Svn</SccProjectName>
+    <SccProvider>SubversionScc</SccProvider>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\OdysseyDBModel.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="OdysseyDBAdminRIA.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="OdysseyDBAdminRIA.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDBAdminRIA.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="OdysseyDBAdminRIA.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDBAdminRIA.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="OdysseyDB.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="OdysseyDB.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDB.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="OdysseyDB.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDB.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="OdysseyDBSyncService.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="OdysseyDBSyncService.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDBSyncService.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="OdysseyDBSyncService.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>OdysseyDBSyncService.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+</Project>

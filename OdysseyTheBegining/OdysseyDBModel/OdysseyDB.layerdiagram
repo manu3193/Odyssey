@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3e41e3dc-1d5d-4ba3-b04b-dbf59f2ea3b1" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="e4eb6073-8fdd-497a-b70d-3efb3a02a777" name="Comment1">
+      <body>MVVM Pattern</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="d2ccb760-34e7-4ab2-b63d-e1072b21b70a" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="9bcaf83d-5066-4b58-98b3-28feee7d3331" name="Comment2">
+      <body>Windows Metro UI</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="d2ccb760-34e7-4ab2-b63d-e1072b21b70a" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="9975aefc-2464-43da-946f-656b3ca04888" name="Comment3">
+      <body>Repository Pattern</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2b31712f-c5e5-4e79-8dab-13646d6fa360" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="98958576-88c0-4f12-a68f-2b3add331dec" name="Comment41">
+      <body>Azure SQL and Mongodb Full Text Search Indexing</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2b31712f-c5e5-4e79-8dab-13646d6fa360" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="6a5f8073-9d87-406d-89ee-4e2383ca2e1f" name="Comment43">
+      <body>Entity Framework</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2b31712f-c5e5-4e79-8dab-13646d6fa360" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="7b2be65d-d99f-4deb-8d2f-1382a4b1b84d" name="Azure SQL Database Server" />
+    <layer Id="1787c77a-4095-4356-b9d7-d443455b519a" name="Azure VM Mongo Database Server" />
+    <layer Id="f6d0c2c9-4b3a-4af1-8e7c-d8e43fad0c43" name="Client">
+      <childLayers>
+        <layer Id="224e45b3-d4e4-4699-ac00-62a54a538b98" name="Windows Application">
+          <childLayers>
+            <layer Id="2b31712f-c5e5-4e79-8dab-13646d6fa360" name="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Data Access Layer&#xD;&#xA;">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="7919a3ba-025f-4d9c-a50a-72df2d55c368" direction="Bidirectional">
+                  <layerMoniker Id="7b2be65d-d99f-4deb-8d2f-1382a4b1b84d" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="075b6406-11b0-4e98-837f-cec8c718ccee" direction="Bidirectional">
+                  <layerMoniker Id="1787c77a-4095-4356-b9d7-d443455b519a" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="ca96386b-27e4-4566-a8d7-6f1aa3b48ca9" name="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Oddysey Logic">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="d239e5b8-0421-4d96-832a-10735ac407f0" direction="Bidirectional">
+                  <layerMoniker Id="2b31712f-c5e5-4e79-8dab-13646d6fa360" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="d2ccb760-34e7-4ab2-b63d-e1072b21b70a" name="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Presentation">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="89af13b9-a033-4415-b7af-ef3c3ef7d9fd" direction="Bidirectional">
+                  <layerMoniker Id="ca96386b-27e4-4566-a8d7-6f1aa3b48ca9" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

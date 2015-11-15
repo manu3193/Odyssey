@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="eb956ad5-e0ed-4900-ab9d-2a458c095660" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="ba2fe0e0-7e30-4f10-8f4a-da7d43c85fde" name="Comment1">
+      <body>ASP.NET Web REST API</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="163bb856-f0a0-4d11-b8cb-bde9095e036f" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="e8ec15d2-c52b-4cf7-8fc6-e9fd50c166bc" name="Comment12">
+      <body>Azure SQL and Mongodb Full Text Search Indexing</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="4ad5a306-0935-4127-8444-32edaa72becf" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="63aaa3a7-5568-4236-b73d-55588da27945" name="Comment13">
+      <body>Entity Framework</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="4ad5a306-0935-4127-8444-32edaa72becf" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="5585916a-2f4b-40a4-9149-efbde96df804" name="Comment14">
+      <body>Bootstrap.js</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="9b988b1e-ac8f-4f44-a5d4-3c2aa5e0bed4" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="2eea2f16-8bd0-4c2c-bdc6-30bae3cf2c52" name="Comment15">
+      <body>Angular.js</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="9b988b1e-ac8f-4f44-a5d4-3c2aa5e0bed4" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="e64872d1-6e82-4bcb-8609-47fff1fd2bb3" name="Comment151">
+      <body>REST Client API</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="9b988b1e-ac8f-4f44-a5d4-3c2aa5e0bed4" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="372c3d08-485b-483f-995a-e0838ca1dbfb" name="Azure Web Server">
+      <childLayers>
+        <layer Id="4ad5a306-0935-4127-8444-32edaa72becf" name="&#xD;&#xA;Data Access Layer">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="db3b696a-28eb-4dae-9f0b-e809fc90fcff" direction="Bidirectional">
+              <layerMoniker Id="456ad626-3242-467a-a188-0a64542f5ffa" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="b509271e-1c35-4f53-89f4-6210a176b65d" direction="Bidirectional">
+              <layerMoniker Id="03c8d9a0-0d7d-46a1-90ff-fed2cb139bd8" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="e4e95da9-8ba4-489e-8014-5a997ac5b1bb" direction="Forward">
+              <layerMoniker Id="3b7c21b7-0db6-4bd3-b6ac-31de67e003a4" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="3b7c21b7-0db6-4bd3-b6ac-31de67e003a4" name="&#xD;&#xA;App Logic">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="46d085ae-39c3-44d5-8c0a-2da7ba1fbc05" direction="Forward">
+              <layerMoniker Id="163bb856-f0a0-4d11-b8cb-bde9095e036f" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="ec58ecb7-e4bc-43b4-871d-03472fcc9419" direction="Forward">
+              <layerMoniker Id="4ad5a306-0935-4127-8444-32edaa72becf" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="163bb856-f0a0-4d11-b8cb-bde9095e036f" name="&#xD;&#xA;Restful Web Server" />
+      </childLayers>
+    </layer>
+    <layer Id="03c8d9a0-0d7d-46a1-90ff-fed2cb139bd8" name="Azure VM Mongodb " />
+    <layer Id="456ad626-3242-467a-a188-0a64542f5ffa" name="Azure SQL Server1" />
+    <layer Id="9f31e0e2-19d7-4d86-a229-8eb1ebf78033" name="Client Workstation">
+      <childLayers>
+        <layer Id="47cb70f2-b352-4679-b14b-6117c9012cb7" name="Browser">
+          <childLayers>
+            <layer Id="9b988b1e-ac8f-4f44-a5d4-3c2aa5e0bed4" name="ASP.NET MVC">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="a816405f-e776-428f-840e-ce39b3511953" direction="Bidirectional">
+                  <layerMoniker Id="163bb856-f0a0-4d11-b8cb-bde9095e036f" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="a6e38aeb-b192-4b8e-aac5-d41d896b817b" name="Windows Application">
+          <childLayers>
+            <layer Id="2eab8d2b-e305-4535-8b9b-13589e3c2215" name="Rest Client API">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="3e0f2135-8303-4c2a-9e2a-e9ed41308e99" direction="Bidirectional">
+                  <layerMoniker Id="163bb856-f0a0-4d11-b8cb-bde9095e036f" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

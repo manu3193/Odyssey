@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "OdysseyDBModel", "OdysseyDBModel\OdysseyDBModel.modelproj", "{D476E442-146D-46C8-A2EE-8D3EC8517273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdysseyCloud", "OdysseyCloud\OdysseyCloud.csproj", "{49E036AC-01CD-49BD-8B0A-DF100C2D6E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIOdyssey", "GUIOdyssey\GUIOdyssey\GUIOdyssey.csproj", "{2E64AEC9-EA66-4DB1-94B1-F584FC6EC192}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D476E442-146D-46C8-A2EE-8D3EC8517273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D476E442-146D-46C8-A2EE-8D3EC8517273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D476E442-146D-46C8-A2EE-8D3EC8517273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D476E442-146D-46C8-A2EE-8D3EC8517273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E036AC-01CD-49BD-8B0A-DF100C2D6E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E036AC-01CD-49BD-8B0A-DF100C2D6E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E036AC-01CD-49BD-8B0A-DF100C2D6E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E036AC-01CD-49BD-8B0A-DF100C2D6E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E64AEC9-EA66-4DB1-94B1-F584FC6EC192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E64AEC9-EA66-4DB1-94B1-F584FC6EC192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E64AEC9-EA66-4DB1-94B1-F584FC6EC192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E64AEC9-EA66-4DB1-94B1-F584FC6EC192}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
