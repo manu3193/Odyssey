@@ -197,8 +197,7 @@
     <Resource Include="View\Image\save.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\SQLScripts\dbo.f_UserLoginAuth.sql" />
-    <Content Include="Resources\SQLScripts\SQLQuery1.sql" />
+    <Content Include="Resources\SQLScripts\OdysseyDBScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
