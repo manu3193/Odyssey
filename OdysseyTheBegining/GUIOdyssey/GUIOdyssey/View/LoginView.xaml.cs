@@ -58,7 +58,8 @@ namespace GUIOdyssey.View
             //lm.ImportSongsToLibrary("C:\\Users\\Manuel\\Desktop\\mudi");
             instance.UserId=Guid.Parse("1bbe27bd-164f-4798-9e15-6f4fb2f4bbab");
            // lm = new LibraryManager();
-            lm.ImportSongsToLibrary("C:\\Users\\Manuel\\Desktop\\mudi1");
+            //lm.ImportSongsToLibrary("C:\\Users\\Manuel\\Desktop\\mudi1");
+            lm.InitializeLibrary();
             CrearCuenta nuevaCuenta = new CrearCuenta();
             nuevaCuenta.Show();
             this.Close();

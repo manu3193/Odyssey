@@ -21,6 +21,8 @@ namespace GUIOdyssey.LogicLayer.ObjectModels
         public string Lyric { get; set; }
         public string SongPath { get; set; }
 
+        public bool isSynced { get; set; }
+
         public override string ToString()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using Id3;
 using GUIOdyssey.DAL.Persistence.Models;
 using GUIOdyssey.DAL.Persistence.Repositories;
@@ -22,6 +23,28 @@ namespace GUIOdyssey.LogicLayer
 
         public List<TrackInfo> userTracks { get; set; }
 
+        /// <summary>
+        /// Metodo encargado de inicializar la biblioteca, carga los datos de las canciones desde la base de datos
+        /// </summary>
+        public void InitializeLibrary()
+        {
+            SessionManager sessionManager = SessionManager.Instance;
+            TrackRepository trackRepo = new TrackRepository();
+            UserTrackRepository userTrackRepo =new UserTrackRepository();
+            List<Track> userStoredTracks= trackRepo.GetTraksByUserId(sessionManager.UserId);
+            foreach (var userTrack in userStoredTracks)
+            {
+                TrackInfo trackInfo =new TrackInfo() {Title = userTrack.Title,TrackId = userTrack.TrackID,AlbumTitle = userTrack.Album.Title,
+                                                      ArtistTitle = userTrack.Album.Artist.Title,SongPath = userTrack.Path,Year = userTrack.Album.ReleaseYear,
+                                                      Lyric = userTrack.Lyrics,Genre = userTrack.Genre};
+                trackInfo.isSynced = userTrackRepo.GetUserTrackByPK(sessionManager.UserId, trackInfo.TrackId).IsSync;
+                this.userTracks.Add(trackInfo);
+                trackRepo.Dispose();
+                userTrackRepo.Dispose();
+            }
+
+
+        }
         /// <summary>
         /// Constructor por defecto, inicializa la lista de tracks
         /// </summary>
