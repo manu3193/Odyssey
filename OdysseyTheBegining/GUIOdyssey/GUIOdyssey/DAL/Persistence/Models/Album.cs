@@ -25,7 +25,7 @@ namespace GUIOdyssey.DAL.Persistence.Models
 
         public Guid? MusicBrainzID { get; set; }
 
-        public string ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
 
         public virtual Artist Artist { get; set; }
 

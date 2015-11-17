@@ -434,7 +434,7 @@ GO
 --Ejemplo de uso al llamar el procedimiento almacenado de autentificacion de , devuelve null si no existe o bien el id en caso de existir
 DECLARE @result1 uniqueidentifier EXEC [dbo].[usp_AuthUserLogin] @Nickname='majeco',
 																 @Password = 'HELOMIDIOS',
-																 @result= @result1 OUTPUT
+																 @UserId= @result1 OUTPUT
 Select @result1 as UserID
 go
 

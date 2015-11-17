@@ -8,7 +8,7 @@ using GUIOdyssey.DAL.Persistence.Models;
 
 namespace GUIOdyssey.DAL.Persistence
 {
-    class OdysseyContextInitializer : DropCreateDatabaseAlways<OdysseyContext>
+    class OdysseyContextInitializer : DropCreateDatabaseIfModelChanges<OdysseyContext>
     {
         protected override void Seed(OdysseyContext context)
         {

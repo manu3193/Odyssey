@@ -37,9 +37,14 @@ namespace GUIOdyssey.DAL.Persistence.Repositories
             return DbSet.Find(id);
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
-            DbSet.Add(entity);
+           return DbSet.Add(entity);
+        }
+
+        public T Attach(T entity)
+        {
+            return DbSet.Attach(entity);
         }
 
         public virtual void Update(T entity)
