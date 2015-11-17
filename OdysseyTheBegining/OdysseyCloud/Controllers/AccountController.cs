@@ -18,7 +18,7 @@ using OdysseyCloud.Providers;
 using OdysseyCloud.Results;
 
 namespace OdysseyCloud.Controllers
-{
+{/*
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -490,5 +490,5 @@ namespace OdysseyCloud.Controllers
         }
 
         #endregion
-    }
+    }*/
 }

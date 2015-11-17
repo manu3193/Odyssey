@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace OdysseyCloud.Controllers
-{
+{/*
     [Authorize]
     public class ValuesController : ApiController
     {
@@ -36,5 +36,5 @@ namespace OdysseyCloud.Controllers
         public void Delete(int id)
         {
         }
-    }
+    }*/
 }
