@@ -295,6 +295,42 @@ BEGIN
 END
 GO
 
+/*Funcion que revisa si existe una cancion en la base de datos*/
+GO
+CREATE FUNCTION dbo.IfTrackExist(@TrackId uniqueidentifier)
+RETURNS BIT 
+AS
+BEGIN
+	DECLARE @Exist bit
+	IF EXISTS(SELECT 1 FROM dbo.Tracks tracks WHERE @TrackId= tracks.TrackID)
+		SET @Exist =1
+	ELSE
+		SET @Exist=0
+	RETURN @Exist
+END
+GO
+
+/*Funcion que retorna el id del genero segun su nombre*/
+GO
+CREATE FUNCTION dbo.GetGenreId(@Genre varchar(50))
+RETURNS UNIQUEIDENTIFIER 
+AS
+BEGIN
+	DECLARE @GenreID UNIQUEIDENTIFIER
+	SELECT @GenreID = GenreId 
+	FROM [dbo].[Genres] 
+	WHERE Genre = @Genre
+	RETURN @GenreID
+END
+GO
+
+
+--******************************************************************************************************************************************
+--**
+--**                                                      Triggers 
+--**
+--******************************************************************************************************************************************
+
 /* Trigger que ingresa los datos modificados de la metadata en la tabla de historial con su respectiva version,      *******FALTA PROBAR
  */
 CREATE TRIGGER dbo.TrackUpdate 
@@ -341,12 +377,13 @@ GO
 CREATE PROCEDURE [dbo].[usp_AuthUserLogin]
 	@Nickname nvarchar(50),
 	@Password nvarchar(50),
+	@Name nvarchar(50) OUTPUT,
 	@UserID uniqueidentifier OUTPUT
 	
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT @UserID= UserID
+	SELECT @UserID= UserID,@Name=Name
 	FROM [dbo].[Users] AS users 
 	WHERE [users].[Nickname] = @Nickname AND [users].[Password] = @Password
 END
@@ -354,7 +391,7 @@ END
 GO
 
 --Elimina el procedimiento almacenado de autentificaci'on
---drop procedure dbo.usp_AuthUserLogin
+--drop procedure dbo.usp_insertTrack
 --GO
 
 GO
@@ -363,7 +400,7 @@ GO
 CREATE PROCEDURE [dbo].[usp_AuthAdminLogin]
 	@Nickname nvarchar(50),
 	@Password nvarchar(50),
-	@result uniqueidentifier OUTPUT
+	@result uniqueidentifier OUTPUT, 
 	
 AS
 BEGIN
@@ -415,6 +452,59 @@ BEGIN
 END		
 GO
 
+/*Procedimiento almacenado que ingresa tracks nuevas a la base de datos*/
+CREATE PROCEDURE dbo.usp_insertTrack
+	@TrackId uniqueidentifier,
+	@Title  nvarchar(50),
+	@Lyrics nvarchar(max),
+	@TrackURI nvarchar(200),
+	@Album nvarchar(50),
+	@Artist nvarchar(50),
+	@Year int,
+	@Genre varchar(50),
+	@Result int OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DECLARE @TrackCheck BIT
+	DECLARE @GenreID uniqueidentifier
+	SET @TrackCheck= [dbo].[IfTrackExist](@TrackId)
+	SET @GenreID = [dbo].[getGenreId](@Genre)
+	IF @TrackCheck = 0
+		BEGIN
+			INSERT INTO [dbo].[Tracks] VALUES (@TrackID ,@Title ,@Lyrics, @TrackURI, @Album, @Artist,@Year, @GenreID) 
+			SET @Result = 1
+		END
+	ELSE
+		SET @Result=0
+END
+
+/*Procedimiento almacenado que retorna las canciones de un usuario*/
+CREATE PROCEDURE dbo.usp_GetAllUserTracks
+	@TrackId uniqueidentifier,
+	@Title  nvarchar(50),
+	@Lyrics nvarchar(max),
+	@TrackURI nvarchar(200),
+	@Album nvarchar(50),
+	@Artist nvarchar(50),
+	@Year int,
+	@Genre varchar(50),
+	@Result int OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DECLARE @TrackCheck BIT
+	DECLARE @GenreID uniqueidentifier
+	SET @TrackCheck= [dbo].[IfTrackExist](@TrackId)
+	SET @GenreID = [dbo].[getGenreId](@Genre)
+	IF @TrackCheck = 0
+		BEGIN
+			INSERT INTO [dbo].[Tracks] VALUES (@TrackID ,@Title ,@Lyrics, @TrackURI, @Album, @Artist,@Year, @GenreID) 
+			SET @Result = 1
+		END
+	ELSE
+		SET @Result=0
+END
 
 
 
@@ -432,10 +522,13 @@ INSERT into dbo.Users values (NEWID(), 'manzumbado', 'MAnuel Zumbado', 'cacabubu
 GO
 
 --Ejemplo de uso al llamar el procedimiento almacenado de autentificacion de , devuelve null si no existe o bien el id en caso de existir
-DECLARE @result1 uniqueidentifier EXEC [dbo].[usp_AuthUserLogin] @Nickname='majeco',
+DECLARE @result1 uniqueidentifier 
+DECLARE @result2 nvarchar(50)
+EXEC [dbo].[usp_AuthUserLogin] @Nickname='majesco',
 																 @Password = 'HELOMIDIOS',
+																 @Name =@result2 OUTPUT,
 																 @UserId= @result1 OUTPUT
-Select @result1 as UserID
+Select @result1 as UserID, @result2 as Name
 go
 
 --Ejemplo de uso al llamar el procedimiento almacenado de autentificacion de administrador, retorna null si no existe o bien el id en caso de existir

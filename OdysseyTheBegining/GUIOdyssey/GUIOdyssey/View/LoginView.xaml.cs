@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GUIOdyssey.LogicLayer.ObjectModels;
 
 namespace GUIOdyssey.View
 {
@@ -57,9 +58,17 @@ namespace GUIOdyssey.View
             LibraryManager lm = new LibraryManager();
             //lm.ImportSongsToLibrary("C:\\Users\\Manuel\\Desktop\\mudi");
             instance.UserId=Guid.Parse("1bbe27bd-164f-4798-9e15-6f4fb2f4bbab");
+            instance.Nickname = "Majesco";
            // lm = new LibraryManager();
             //lm.ImportSongsToLibrary("C:\\Users\\Manuel\\Desktop\\mudi1");
             lm.InitializeLibrary();
+            //OdysseyCloudAPIConsumer ocac =new OdysseyCloudAPIConsumer();
+            //var a =ocac.GetUserAuth(new UserInfo() {Nickname = "manzumbado", Password = "cacabubu"}); 
+            //Console.WriteLine(a);
+            FileManager fm= new FileManager();
+            fm.GetUserPathToOdysseyMusic();
+            string reslt =fm.uploadFile(@"C:\Users\Manuel\Desktop\music\09 Eclipse.mp3");
+            string result2 = fm.downloadFile(reslt);
             CrearCuenta nuevaCuenta = new CrearCuenta();
             nuevaCuenta.Show();
             this.Close();
@@ -67,6 +76,9 @@ namespace GUIOdyssey.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            OdysseyCloudAPIConsumer clientApiConsumer =new OdysseyCloudAPIConsumer();
+            Guid? userID = clientApiConsumer.GetUserAuth(new UserInfo() {Nickname = "manzumbado", Password = "cacabubu"}).Result;
+            Console.WriteLine(userID.ToString());
             MainWindow principal = new MainWindow();
             principal.Show();
             this.Close();

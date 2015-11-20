@@ -28,6 +28,8 @@ namespace GUIOdyssey.LogicLayer
         /// </summary>
         public void InitializeLibrary()
         {
+            FileManager fileManager =new FileManager();
+            fileManager.CreateUserDirectory();
             SessionManager sessionManager = SessionManager.Instance;
             TrackRepository trackRepo = new TrackRepository();
             UserTrackRepository userTrackRepo =new UserTrackRepository();
@@ -37,12 +39,11 @@ namespace GUIOdyssey.LogicLayer
                 TrackInfo trackInfo =new TrackInfo() {Title = userTrack.Title,TrackId = userTrack.TrackID,AlbumTitle = userTrack.Album.Title,
                                                       ArtistTitle = userTrack.Album.Artist.Title,SongPath = userTrack.Path,Year = userTrack.Album.ReleaseYear,
                                                       Lyric = userTrack.Lyrics,Genre = userTrack.Genre};
-                trackInfo.isSynced = userTrackRepo.GetUserTrackByPK(sessionManager.UserId, trackInfo.TrackId).IsSync;
+                trackInfo.isSynced = userTrackRepo.GetUserTrackByPK(sessionManager.UserId,trackInfo.TrackId).IsSync;
                 this.userTracks.Add(trackInfo);
-                trackRepo.Dispose();
-                userTrackRepo.Dispose();
             }
-
+            trackRepo.Dispose();
+            userTrackRepo.Dispose();
 
         }
         /// <summary>
@@ -283,7 +284,22 @@ namespace GUIOdyssey.LogicLayer
             return resultGenre;
 
         }
-            
 
+        public async void SyncUserLibrary()
+        {
+            FileManager fileManager = new FileManager();
+            OdysseyCloudAPIConsumer ApiConsumer = new OdysseyCloudAPIConsumer();
+
+            foreach (var trackInfo in userTracks)
+            {
+                if (!trackInfo.isSynced)
+                {
+                    string fileUploadedUri = fileManager.uploadFile(trackInfo.SongPath);
+                    trackInfo.isSynced = true;
+                    trackInfo.songURI = fileUploadedUri;
+                    await ApiConsumer.InsertTrackMetadata(trackInfo);
+                }
+            }
+        }
     }
 }

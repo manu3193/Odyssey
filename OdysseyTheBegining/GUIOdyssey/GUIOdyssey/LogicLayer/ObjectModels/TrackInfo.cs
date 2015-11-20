@@ -9,7 +9,7 @@ namespace GUIOdyssey.LogicLayer.ObjectModels
     /// <summary>
     /// Objeto que representa la metadata de una cancion para su manejo en la logica
     /// </summary>
-    class TrackInfo
+    public class TrackInfo
     {
         public Guid TrackId { get; set; }
 
@@ -20,7 +20,7 @@ namespace GUIOdyssey.LogicLayer.ObjectModels
         public string Genre { get; set; }
         public string Lyric { get; set; }
         public string SongPath { get; set; }
-
+        public string songURI { get; set; }
         public bool isSynced { get; set; }
 
         public override string ToString()

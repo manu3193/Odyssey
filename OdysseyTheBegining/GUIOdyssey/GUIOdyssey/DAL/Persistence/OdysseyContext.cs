@@ -7,7 +7,7 @@ namespace GUIOdyssey.DAL.Persistence
     public class OdysseyContext : DbContext
     {
 
-        public OdysseyContext() : base("name=OdysseyContext")
+        public OdysseyContext() :   base("name=OdysseyContext")
         {
             Database.SetInitializer<OdysseyContext>(new OdysseyContextInitializer());
         }
