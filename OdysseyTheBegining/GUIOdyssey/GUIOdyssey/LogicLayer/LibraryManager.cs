@@ -298,6 +298,7 @@ namespace GUIOdyssey.LogicLayer
                     trackInfo.isSynced = true;
                     trackInfo.songURI = fileUploadedUri;
                     await ApiConsumer.InsertTrackMetadata(trackInfo);
+                    fileManager.uploadFile(trackInfo.SongPath);
                 }
             }
         }
