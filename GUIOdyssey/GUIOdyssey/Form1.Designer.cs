@@ -49,7 +49,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "MP3Files|*.mp3|AACFiles|*.aac";
+            this.openFileDialog1.Filter = "MP3Files|*.mp3";
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.Title = "MP3 Player";
             // 

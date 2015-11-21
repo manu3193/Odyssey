@@ -6,6 +6,8 @@ using System.Threading;
 using System.IO;
 using System.Diagnostics;
 using System.Data;
+using System.Linq;
+using GUIOdyssey.LogicLayer;
 
 namespace GUIOdyssey
 {
@@ -16,8 +18,10 @@ namespace GUIOdyssey
         private bool local;
         private string source;
         string path;
-        public Form1()
+        private LibraryManager lm;
+        public Form1(LibraryManager lm)
         {
+            this.lm = lm;
             InitializeComponent();
             dataGridView1.ReadOnly = true;
             this.BindDataGridView();
@@ -26,13 +30,18 @@ namespace GUIOdyssey
         private void BindDataGridView()
         {
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[3] { new DataColumn("R", typeof(string)),
-                                new DataColumn("Name", typeof(string)),
-                                new DataColumn("Genero",typeof(string)) });
-            dt.Rows.Add("+", "http://odysseycollection.blob.core.windows.net/odysseymusic/1bbe27bd-164f-4798-9e15-6f4fb2f4bbab/09 Eclipse.mp3", "Romanticas");
-            dt.Rows.Add("+", @"C:\romanticas\ahora tu - malu(2).mp3", "Tropical");
-            dt.Rows.Add("+", "http://odysseycollection.blob.core.windows.net/odysseymusic/1bbe27bd-164f-4798-9e15-6f4fb2f4bbab/09 Eclipse.mp3", "Romanticas");
-            dt.Rows.Add("+", @"C:\romanticas\ahora tu - malu(2).mp3", "Tropical");
+            dt.Columns.AddRange(new DataColumn[7] { new DataColumn("R", typeof(string)),
+                                                    new DataColumn("Title", typeof(string)),
+                                                    new DataColumn("Artist",typeof(string)),
+                                                    new DataColumn("Album",typeof(string)),
+                                                    new DataColumn("Genre", typeof(string)),
+                                                    new DataColumn("Year",typeof(int)),
+                                                    new DataColumn("Lyrics",typeof(string))});
+            foreach (var trackInfo in lm.userTracks)
+            {
+                dt.Rows.Add("+", trackInfo.Title, trackInfo.ArtistTitle, trackInfo.AlbumTitle, trackInfo.Genre,
+                    trackInfo.Year, trackInfo.Lyric);
+            }
             this.dataGridView1.DataSource = dt;
         }
 
@@ -415,7 +424,8 @@ public async void button1_Click(object sender, EventArgs e)
         {
             StopPlayback();
             StopLocal();
-            path = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            int index = e.RowIndex;
+            path = this.lm.userTracks.ElementAt(index).SongPath;
             label2.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value.ToString();
             label3.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex+1].Value.ToString();
             setMp3Scope();

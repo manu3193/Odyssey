@@ -16,7 +16,7 @@ namespace GUIOdyssey.LogicLayer
     /// <summary>
     /// Clase encargada de manejar  lo relacionado a la biblioteca de usuario
     /// </summary>
-    class LibraryManager
+    public class LibraryManager
     {
 
         public string[] genreList { get; set; }

@@ -75,12 +75,14 @@
 
                         <Image Source="Image/mu.png" Grid.ColumnSpan="2" Stretch="Fill" Width="100" Height="100"
                              MouseLeave="Image_MouseLeave" MouseEnter="Image_MouseEnter" Name="Imagen1"  ></Image>
-                        <TextBlock FontSize="24" FontFamily="Century" Foreground="White" Text="Usuario:" Grid.Row="1" Margin="15"></TextBlock>
-                        <TextBlock FontSize="24" FontFamily="Century" Foreground="White" Text="Contraseña: " Grid.Row="2" Margin="15"></TextBlock>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="15" FontFamily="Arial" FontSize="18.667"></TextBox>
-                        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="15" FontFamily="Arial" FontSize="18.667"></PasswordBox>
+                        <TextBlock FontSize="24" FontFamily="Century" Foreground="White" Text="Usuario:" Grid.Row="1"
+                                   Grid.Column="0" Margin="15"></TextBlock>
+                        <TextBlock FontSize="24" FontFamily="Century" Foreground="White" Text="Contraseña: " Grid.Row="2"
+                                   Grid.Column="0" Margin="15"></TextBlock>
+                        <TextBox Name="NickText"  Grid.Row="1" Grid.Column="1" Margin="15" FontFamily="Arial" FontSize="18.667"></TextBox>
+                        <PasswordBox Name="PasswordText"  Grid.Row="2" Grid.Column="1" Margin="15" FontFamily="Arial" FontSize="18.667"></PasswordBox>
 
-                        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
